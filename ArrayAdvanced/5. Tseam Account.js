@@ -18,6 +18,7 @@ function solve(arr) {
   let command = arr[index];
 
   while (command !== "Play!") {
+    
     let buff = [];
     let oneIndex = "";
 
@@ -38,6 +39,7 @@ function solve(arr) {
     switch (token) {
 
       case "Install":
+
         if (!games.includes(game)) {
           games.push(game);
         }
