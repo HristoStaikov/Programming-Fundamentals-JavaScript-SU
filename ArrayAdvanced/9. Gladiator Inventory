@@ -1,0 +1,47 @@
+function solve (arr) {
+
+let inventory = arr.shift().split(" ");
+
+for(let index = 0; index < arr.length; index++) {
+    let [command, item] = arr[index].split(" ");
+    
+    switch(command){
+        
+        case "Buy":
+            !inventory.includes(item) && inventory.push(item);
+        break;
+        
+          case "Trash":
+            let itemToDelete = inventory.indexOf(item);
+            inventory.includes(item) && inventory.splice(itemToDelete,1);
+        break;
+    
+          case "Repair":
+            let itemToRepair = inventory.indexOf(item);
+            if(itemToRepair >= 0){
+                let item = inventory.splice(itemToRepair,1);
+                inventory.push(item[0]);
+            }
+        break;
+        
+          case "Upgrade":
+        let upgrade = item.split("-");
+        let itemToUpgrade = inventory.indexOf(upgrade[0]);
+        
+        if(itemToUpgrade >= 0){
+         inventory.splice(itemToUpgrade+1, 0, `${upgrade[0]}:${upgrade[1]}`);
+        }
+        break;
+    }
+    
+}   
+console.log(inventory.join(" "));
+}solve (['SWORD Shield Spear',
+'Buy Bag',
+'Trash Shield',
+'Repair Spear',
+'Upgrade SWORD-Steel'])
+solve(['SWORD Shield Spear',
+'Trash Bow',
+'Repair Shield',
+'Upgrade Helmet-V'])
